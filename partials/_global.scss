@@ -1,0 +1,610 @@
+
+
+.wrapper {
+    margin: 0 auto;
+    width: 90%;
+    // max-width: 1400px;
+}
+
+span {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+    color: $blackColor;
+    background-color: rgb(15, 14, 14);
+    
+}
+
+p {
+    margin: 0;
+}
+
+h1,h2 {
+    text-align: center;
+    
+}
+
+button,input[type=submit] {
+    border: none;
+    margin: 20px;
+    padding: 10px 25px;
+    border-radius: 20px;
+    background-color: $blackColor;
+    color: white;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+    }
+}
+
+.move_top_closed{
+    animation: move_top_closed 1 2s linear forwards;
+}
+
+.move_top_opened{
+    animation: move_top_opened 1 2s linear forwards;
+}
+
+.intro {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    background-color: $goldColor;
+    text-align: center;
+    z-index: 1;
+    border-radius: 50px 0 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+        text-align: start;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+
+        input[type=text] {
+            text-align: center;
+            font-weight: bold;
+            border: none;
+            margin-left: 20px;
+        }
+    }
+
+    span {
+        font-size: 1rem;
+        
+    }
+    
+}
+.header {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-bottom: 30px;
+    h2 {
+        color: $goldColor;
+    }
+
+    .logo {
+        
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+            background-color: $goldColor;
+            color: $blackColor;
+            padding: 10px;
+            margin-top: 10px;
+            animation: glow infinite alternate-reverse 5s;
+            
+            
+            font-weight: bold;
+            font-size: 3rem;
+        }
+    
+        p:nth-child(2) {
+            background-color: $blackColor;
+            animation: glow infinite alternate-reverse 5s;
+            font-size: 1.5rem;
+            width: 70px;
+            transform: rotate(-90deg);
+            // margin: -11px;
+            color: $goldColor;
+            
+        }
+    
+        p:last-child {
+            
+            background-color: $blackColor;
+            animation: glow infinite alternate-reverse 5s;
+            color: $goldColor;
+            border: solid 5px $goldColor;
+        }
+    }
+}
+
+
+
+
+.gameBoard {
+    display: flex;
+    
+
+    .alert {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -300px;
+        margin-top: -150px;
+        background-color: $goldColor;
+        
+        width: 600px;
+        height: 300px;
+        text-align: center;
+        transform: scale(0);
+        transition: all 0.5s;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        border-radius: 20px 0 20px 0;
+        border: solid $blackColor 5px;
+        padding: 20px;
+
+        h2 {
+            font-size: 2rem;
+            color: rgb(134, 25, 25);
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .time {
+            background-color: $blackColor;
+            color: $goldColor;
+            animation: countdown 0.5s infinite alternate;
+            padding: 8px;
+            border-radius: 20px;
+
+        }
+
+        div {
+           display: flex;
+           justify-content: space-around;
+           align-items: center;
+
+            i {
+               margin-right: 10px;
+               animation: ringing infinite alternate 0.6s;
+               font-size: 3rem;
+           }
+
+           button {
+               i {
+                   animation: none;
+               }
+           }
+
+        }
+    }
+
+    .players_selection {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(255, 255, 255);
+        justify-content: center;
+        align-items: center;
+        width: 20vw;
+        border-radius: 20px;
+        border: solid $goldColor 5px;
+        // height: 95%;
+        padding: 10px;
+        max-height: 525px;
+    }
+}
+
+
+.cases {
+    perspective: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 95%;
+    width: 60vw;
+    align-items: center;
+    padding: 0 50px;
+    background-color: white;
+    border-radius: 10px;
+    border: solid $goldColor 5px;
+    margin: 0 30px;
+ 
+}
+
+.case{
+    
+    border-radius: 10px;
+    width: 120px;
+    height: 96px;
+    position: relative;
+    transition: all 0.5s;
+    margin: 3px;
+    
+    
+
+    &_selectable {
+        &:hover{
+            transform: scale(1.2);
+            cursor: pointer;
+            
+            
+        }
+    }
+
+  
+
+    .caseTop {
+        
+        position: absolute;
+        top: 0;
+        transform-origin: top;
+        width: 100%;
+        height: 100%;
+        perspective: 1000px;
+        transition: all 0.5s;
+
+        p {
+            font-size: 1.5rem;
+        }
+
+
+        .case_closed {
+            position: absolute;
+            background-image: url(../assets/closed_case.png);
+            background-size: 100% 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            backface-visibility: hidden;
+            // animation: move_top_closed infinite 2s linear;
+            transform-origin: top;
+            width: 100%;
+            height: 100%;
+           
+
+
+
+            p {
+                color: white;
+                text-align: center;
+                padding-bottom: 20px;  
+                      
+            }
+        }
+
+        .case_opened {
+            transform-origin: bottom;
+            backface-visibility: hidden;
+            background-size: 100% 100%;
+            top: -100%;
+            position: absolute;
+            background-image: url(../assets/top_open_case.png);
+            transform:  rotateX(180deg);
+            // animation: move_top_opened infinite 2s linear;
+            width: 100%;
+            height: 100%;   
+ 
+        }
+    }
+
+    .caseBottom {
+        background-image: url(../assets/bottom_open_case.png);
+        position: absolute;
+        background-size: 100% 100%;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        p {
+            background-color: rgb(37, 37, 37);
+            color: rgb(255, 255, 255);
+            padding: 10px;
+            border-radius: 10px 0 10px 0;
+        }
+    }
+    
+    
+    
+}
+
+.values {
+    min-width: 230px;
+    max-height: 525px;
+    display: flex;
+    background-color: white;
+    border: solid $goldColor 5px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+
+    .value {
+        text-align: end;
+        background-color: $goldColor;
+        border: solid black 5px;
+        padding: 5px;
+        margin: 5px;
+        text-align: center;
+        transition: all 0.5s;
+        min-width: 100px;
+
+        &.off {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white; 
+        }
+                        
+        
+    }
+}
+
+
+
+
+.desappear {
+    animation: desappear 1 linear forwards 0.3s;
+}
+
+.appear {
+    animation: appear 1 linear forwards 0.3s;
+}
+
+
+
+// Animations
+
+@keyframes move_top_closed {
+    to {
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes move_top_opened {
+    to {
+        transform:  rotateX(360deg);
+    }
+}
+
+@keyframes appear {
+    from {
+        // top: -120px;
+        transform: scale(0);
+    }
+    to {
+        
+       transform: scale(1);
+    }
+}
+
+@keyframes desappear {
+    from {
+        // top: -120px;
+        transform: scale(1);
+    }
+    to {
+        
+       transform: scale(0);
+    }
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0px 0px 50px $goldColor;
+    }
+
+    to {
+        box-shadow: 0px 0px 0px $goldColor;
+    }
+}
+
+@keyframes ringing {
+    from {
+        transform: rotate(-45deg);
+    }
+
+    to {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes countdown {
+    from {
+        transform: scale(1);
+
+    }
+
+    to {
+        transform: scale(1.2);
+        background-color: rgb(141, 26, 26);
+        color: white;
+    }
+}
+
+
+// media querys
+
+@media (max-width: 1245px){
+    .case {
+        width: 100px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 1093px){
+    
+
+    .case {
+        .caseBottom{
+            p{
+                font-size: 0.8rem;
+                padding: 5px;
+            }
+        }
+    }
+
+    .intro {
+        width: 80%;
+    }
+    .gameBoard, .values {
+        flex-direction: column;
+    }
+
+    .values {
+        order: 1;
+        width: 100%;
+        flex-direction: row;
+
+        .lowValues .value {
+            min-width: 80px;
+        }
+    }
+
+
+    .gameBoard {
+        justify-content: center;
+        align-items: center;
+        .players_selection {
+            order: 3;
+            max-height: 200px;
+            width: auto;
+            flex-direction: row;
+        }
+    }
+    
+
+    .cases {
+        order: 2;
+        width: 100%;
+        margin:  10px 0;
+    }
+
+    
+
+    .lowValues, .highValues {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+}
+
+@media (max-width: 975px){
+    .values{
+        .value{
+            font-size: 0.9rem;
+        }
+    }
+
+    .case {
+        width: 80px;
+        height: 64px;
+    }
+}
+
+@media (max-width: 780px){
+
+    .intro {
+        p:nth-of-type(2) {
+            display: none;
+        }
+    }
+
+    .header {
+        align-items: start;
+        flex-direction: row;
+        .logo {
+            text-align: start;
+            min-width: 60%;
+            p{
+                max-height: 85px;
+                font-size: 2rem;
+            }
+
+        }
+    }
+
+    
+}
+
+@media (max-width: 600px){
+    .gameBoard{
+        .alert {
+            width: 350px;
+            height: 350px;
+            margin-left: -175px;
+            margin-top: -125px;
+
+            div {
+                i{
+                    font-size: 2rem;
+                }
+            }
+    
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+    
+    .values {
+        display: none;
+    }
+    .cases {
+        padding: 10px;
+    }
+
+    .case {
+        width: 70px;
+        height: 56px;
+    }
+
+    .header {
+        align-items: center;
+        flex-direction: column;
+        .logo {
+            text-align: center;
+            min-width: 60%;
+            p{
+                max-height: 85px;
+                font-size: 2rem;
+            }
+
+        }
+    }
+}

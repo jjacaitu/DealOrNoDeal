@@ -1,0 +1,84 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700,700i&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/d6f0115eb5.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Deal or no Deal!</title>
+</head>
+<body>
+    <main>
+        <div class="wrapper">
+
+            <div class="header">
+
+                <!-- Game logo -->
+
+                <div class="logo">
+                    <p>DEAL</p>
+                    <p>OR</p>
+                    <p>NO DEAL</p>
+                </div>
+
+                <!-- End of game logo -->
+
+                <!-- Information for the player -->
+                <h2 class="info">Please choose your briefcase!</h2>
+            </div>
+
+            <!-- div for the introductory information of the game -->
+            <div class="intro">
+                    
+                <h2>Welcome to Deal Or No Deal!</h2>
+                <p>There are 20 briefcases in the game board, each one containing a different amount of money ranging from $1 to the <span>highest amount which is $2,000,000.</span> You will have to chose one of the <span>20 briefcases</span> as yours at the start of the game, which you will hold.</p>
+
+                <p><br>In each round you will be asked to open a fixed number of briefcases and the amount inside each of them will be revealed! after that you will recieve a call from the banker, who will make you an offer. You will have 15 seconds to decide if you make a deal with the banker or not! if you make a deal all the remaining briefcases will be opened one by one and finally the amount you had in your briefcase will be known, letting you realize if you made a good deal or not! If you decide to continue playing you will have to pick more briefcases to open and the cycle will continue.</p>
+                <h2>The objective:</h2>
+                <p>The <span>main goal</span> of the player is to get the <span>highest amount possible</span> or at least try to make a good deal at the end!</p>
+                <form action="">
+                    <div>
+                        <label for="name"><span>Please enter your name:</span></label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <input type="submit" class="start" value="Start">
+                </form>
+                <!-- <button class="start"> Start</button> -->
+            </div>
+            <!-- end of intro -->
+
+            
+            <div class="gameBoard">
+
+
+                <!-- div that will contain every possible value you can get in the game  -->
+                <div class="values">  
+                     
+                </div>
+                <!-- End of values div -->
+
+                <!-- div to contain all the cases in the game, which will be created later -->
+                <div class="cases">
+
+                </div>
+                <!-- end of cases div -->
+
+                <!-- div to contain the player's selected briefcase -->
+                <div class="players_selection">
+                    <h2>Player's Briefcase</h2>
+                </div>
+                <!-- end of player's selection div -->
+
+            </div>
+        </div>
+    </main>  
+</body>
+<script src="./script.js"></script>
+</html>
+
+
